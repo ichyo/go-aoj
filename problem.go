@@ -31,7 +31,7 @@ const (
 )
 
 func GetProblem(id string, status bool) (Problem, error) {
-	var values url.Values
+	values := make(url.Values)
 	values.Add("id", id)
 	values.Add("status", strconv.FormatBool(status))
 	xml_data, err := APIRequest(problem_api, values)

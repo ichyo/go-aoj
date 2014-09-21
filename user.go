@@ -47,7 +47,7 @@ const (
 )
 
 func GetUser(id string) (User, error) {
-	var values url.Values
+	values := make(url.Values)
 	values.Add("id", id)
 	xml_data, err := APIRequest(user_api, values)
 	if err != nil {
