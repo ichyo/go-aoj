@@ -1,6 +1,7 @@
 package aoj
 
 import (
+	"bytes"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -18,15 +19,24 @@ func APIRequest(api string, values url.Values) ([]byte, error) {
 	}
 	url := api + query
 
-	res, err := http.Get(url)
+	response, err := http.Get(url)
 	if err != nil {
 		return []byte{}, err
 	}
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return []byte{}, err
 	}
 
-	return body, nil
+	res := bytes.Map(func(r rune) rune {
+		switch r {
+		case '\r', '\n':
+			return -1
+		default:
+			return r
+		}
+	}, body)
+
+	return res, nil
 }
