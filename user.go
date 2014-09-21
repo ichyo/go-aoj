@@ -32,7 +32,8 @@ type UserStatus struct {
 }
 
 type Solved struct {
-	ID                 string    `xml:"id"`
+	UserID             string    `xml:"-"` // TODO: fix it for parsing problem.xml
+	ProblemID          string    `xml:"id"`
 	SubmissionDate     time.Time `xml:"-"`
 	SubmissionDateUnix uint64    `xml:"submissiondate"`
 	Language           string    `xml:"language"`
@@ -52,10 +53,10 @@ func GetUser(id string) (User, error) {
 	if err != nil {
 		return User{}, err
 	}
-	return ParseUser(xml_data)
+	return ParseUserXML(xml_data)
 }
 
-func ParseUser(xml_data []byte) (User, error) {
+func ParseUserXML(xml_data []byte) (User, error) {
 	var user User
 	if err := xml.Unmarshal(xml_data, &user); err != nil {
 		return User{}, err
@@ -63,7 +64,9 @@ func ParseUser(xml_data []byte) (User, error) {
 	user.RegisterDate = UnixToTime(user.RegisterDateUnix)
 	user.LastSubmitDate = UnixToTime(user.LastSubmitDateUnix)
 	for i, _ := range user.SolvedList {
-		user.SolvedList[i].SubmissionDate = UnixToTime(user.SolvedList[i].SubmissionDateUnix)
+		user.SolvedList[i].SubmissionDate =
+			UnixToTime(user.SolvedList[i].SubmissionDateUnix)
+		user.SolvedList[i].UserID = user.ID
 	}
 	return user, nil
 }

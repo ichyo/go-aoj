@@ -21,7 +21,7 @@ func TestParseUser(t *testing.T) {
 		t.Errorf("fail to read %s : %s\n", test_data, err)
 	}
 
-	actual, err := ParseUser(xml_data)
+	actual, err := ParseUserXML(xml_data)
 	if err != nil {
 		t.Errorf("fail to parse xml %s : %s\n", test_data, err)
 	}
@@ -47,7 +47,8 @@ func TestParseUser(t *testing.T) {
 		},
 		SolvedList: []Solved{
 			Solved{
-				ID:                 "1086",
+				UserID:             "ichyo",
+				ProblemID:          "1086",
 				SubmissionDateUnix: 1364428321290,
 				SubmissionDate:     UnixToTime(1364428321290),
 				Language:           "C++",
@@ -56,7 +57,8 @@ func TestParseUser(t *testing.T) {
 				CodeSize:           2101,
 			},
 			Solved{
-				ID:                 "1087",
+				UserID:             "ichyo",
+				ProblemID:          "1087",
 				SubmissionDateUnix: 1371475860312,
 				SubmissionDate:     UnixToTime(1371475860312),
 				Language:           "C++",
