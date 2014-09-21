@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<user>
+    <id>ichyo</id>
+    <name>ichyo</name>
+    <affiliation>Kyoto</affiliation>
+    <registerdate>1277708050162</registerdate>
+    <lastsubmitdate>1409842187603</lastsubmitdate>
+    <status>
+        <submission>2789</submission>
+        <solved>996</solved>
+        <accepted>1321</accepted>
+        <wronganswer>930</wronganswer>
+        <timelimit>234</timelimit>
+        <memorylimit>66</memorylimit>
+        <outputlimit>2</outputlimit>
+        <runtimeerror>154</runtimeerror>
+        <compileerror>81</compileerror>
+    </status>
+    <solved_list>
+        <problem>
+            <judge_id>609096</judge_id>
+            <id>1086</id>
+            <submissiondate>1364428321290</submissiondate>
+            <language>C++</language>
+            <cputime>14</cputime>
+            <memory>1208</memory>
+            <code_size>2101</code_size>
+        </problem>
+        <problem>
+            <judge_id>690908</judge_id>
+            <id>1087</id>
+            <submissiondate>1371475860312</submissiondate>
+            <language>C++</language>
+            <cputime>3</cputime>
+            <memory>1312</memory>
+            <code_size>2737</code_size>
+        </problem>
+    </solved_list>
+    <problem_score>
+        <score serial="0" category="straight">99.99999</score>
+        <score serial="1" category="datamanipu">67.76182</score>
+        <score serial="2" category="string">99.99999</score>
+        <score serial="3" category="parsing">78.19871</score>
+        <score serial="4" category="simulation">31.441088</score>
+        <score serial="5" category="puzzle">31.76899</score>
+        <score serial="6" category="geometry">27.3218</score>
+        <score serial="7" category="numerical">17.775427</score>
+        <score serial="8" category="math">43.03211</score>
+        <score serial="9" category="number">65.45467</score>
+        <score serial="10" category="graph">47.58008</score>
+        <score serial="11" category="game">0.0</score>
+        <score serial="12" category="combinatorial">54.5957</score>
+        <score serial="13" category="probability">62.68747</score>
+    </problem_score>
+</user>
