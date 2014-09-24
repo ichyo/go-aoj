@@ -7,13 +7,13 @@ import (
 )
 
 type Problem struct {
-	ID                 string        `xml:"id"`
-	Name               string        `xml:"name"`
-	Available          uint8         `xml:"available"`
-	ProblemTimeLimit   uint32        `xml:"problemtimelimit"`
-	ProblemMemoryLimit uint32        `xml:"problemmemorylimit"`
-	Status             ProblemStatus `xml:"status"`
-	SolvedList         []Solved      `xml:"solved_list"`
+	ID          string        `xml:"id"`
+	Name        string        `xml:"name"`
+	Available   uint8         `xml:"available"`
+	TimeLimit   uint32        `xml:"problemtimelimit"`
+	MemoryLimit uint32        `xml:"problemmemorylimit"`
+	Status      ProblemStatus `xml:"status"`
+	SolvedList  []Solved      `xml:"solved_list"`
 }
 
 type ProblemStatus struct {
