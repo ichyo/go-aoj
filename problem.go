@@ -13,7 +13,7 @@ type Problem struct {
 	TimeLimit   uint32        `xml:"problemtimelimit"`
 	MemoryLimit uint32        `xml:"problemmemorylimit"`
 	Status      ProblemStatus `xml:"status"`
-	SolvedList  []Solved      `xml:"solved_list"`
+	SolvedList  []Solved      `xml:"solved_list>user"`
 }
 
 type ProblemStatus struct {
@@ -50,6 +50,7 @@ func ParseProblemXML(xml_data []byte) (Problem, error) {
 		// FIXME: It is because sharing Solved Type wich User Type
 		p.SolvedList[i].UserID, p.SolvedList[i].ProblemID =
 			p.SolvedList[i].ProblemID, p.ID
+		p.SolvedList[i].SubmissionDate = UnixToTime(p.SolvedList[i].SubmissionDateUnix)
 	}
 	return p, nil
 }
