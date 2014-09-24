@@ -7,23 +7,21 @@ import (
 	"testing"
 )
 
-const (
-	test_data = "./test_data/user.xml"
-)
-
 func TestParseUser(t *testing.T) {
+	const test_data = "./test_data/user.xml"
+
 	f, err := os.Open(test_data)
 	if err != nil {
-		t.Errorf("fail to read %s : %s\n", test_data, err)
+		t.Fatalf("fail to read %s : %s\n", test_data, err)
 	}
 	xml_data, err := ioutil.ReadAll(f)
 	if err != nil {
-		t.Errorf("fail to read %s : %s\n", test_data, err)
+		t.Fatalf("fail to read %s : %s\n", test_data, err)
 	}
 
 	actual, err := ParseUserXML(xml_data)
 	if err != nil {
-		t.Errorf("fail to parse xml %s : %s\n", test_data, err)
+		t.Fatalf("fail to parse xml %s : %s\n", test_data, err)
 	}
 
 	expected := User{
