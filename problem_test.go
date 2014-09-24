@@ -66,3 +66,41 @@ func TestParseProblem(t *testing.T) {
 		t.Errorf("\nexpected:\t%+v\nacutual:\t%+v\n", expected, actual)
 	}
 }
+
+func TestParseProblemList(t *testing.T) {
+	const test_data = "./test_data/problem_list.xml"
+	f, err := os.Open(test_data)
+	if err != nil {
+		t.Fatalf("fail to read %s : %s\n", test_data, err)
+	}
+	xml_data, err := ioutil.ReadAll(f)
+	if err != nil {
+		t.Fatalf("fail to read %s : %s\n", test_data, err)
+	}
+
+	actual, err := ParseProblemListXML(xml_data)
+	if err != nil {
+		t.Fatalf("fail to parse xml %s : %s\n", test_data, err)
+	}
+
+	expected := Volume{
+		Problems: []Problem{
+			Problem{
+				ID:          "1000",
+				Name:        "A + B Problem",
+				TimeLimit:   1,
+				MemoryLimit: 65536,
+			},
+			Problem{
+				ID:          "1001",
+				Name:        "Binary Tree Intersection And Union",
+				TimeLimit:   1,
+				MemoryLimit: 65536,
+			},
+		},
+	}
+
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("\nexpected:\t%+v\nacutual:\t%+v\n", expected, actual)
+	}
+}

@@ -26,8 +26,13 @@ type ProblemStatus struct {
 	RuntimeError uint32 `xml:"runtimeerror"`
 }
 
+type Volume struct {
+	Problems []Problem `xml:"problem"`
+}
+
 const (
-	problem_api = "http://judge.u-aizu.ac.jp/onlinejudge/webservice/problem"
+	problem_api      = "http://judge.u-aizu.ac.jp/onlinejudge/webservice/problem"
+	problem_list_api = "http://judge.u-aizu.ac.jp/onlinejudge/webservice/problem_list"
 )
 
 func GetProblem(id string, status bool) (Problem, error) {
@@ -51,6 +56,24 @@ func ParseProblemXML(xml_data []byte) (Problem, error) {
 		p.SolvedList[i].UserID, p.SolvedList[i].ProblemID =
 			p.SolvedList[i].ProblemID, p.ID
 		p.SolvedList[i].SubmissionDate = UnixToTime(p.SolvedList[i].SubmissionDateUnix)
+	}
+	return p, nil
+}
+
+func GetProblemList(volume int) (Volume, error) {
+	values := make(url.Values)
+	values.Add("volume", strconv.Itoa(volume))
+	xml_data, err := APIRequest(problem_api, values)
+	if err != nil {
+		return Volume{}, err
+	}
+	return ParseProblemListXML(xml_data)
+}
+
+func ParseProblemListXML(xml_data []byte) (Volume, error) {
+	var p Volume
+	if err := xml.Unmarshal(xml_data, &p); err != nil {
+		return Volume{}, err
 	}
 	return p, nil
 }
