@@ -1,0 +1,34 @@
+<problem>
+    <id>2349</id>
+    <name>World Trip</name>
+    <available>1</available>
+    <problemtimelimit>5</problemtimelimit>
+    <problemmemorylimit>262144</problemmemorylimit>
+    <status>
+        <submission>21</submission>
+        <accepted>2</accepted>
+        <wronganswer>12</wronganswer>
+        <timelimit>5</timelimit>
+        <memorylimit>1</memorylimit>
+        <outputlimit>0</outputlimit>
+        <runtimeerror>1</runtimeerror>
+    </status>
+    <solved_list>
+        <user>
+            <id>jag_staff</id>
+            <submissiondate>1330964917292</submissiondate>
+            <language>C++</language>
+            <cputime>135</cputime>
+            <memory>1</memory>
+            <code_size>7480</code_size>
+        </user>
+        <user>
+            <id>jag_staff</id>
+            <submissiondate>1330964917292</submissiondate>
+            <language>C++</language>
+            <cputime>135</cputime>
+            <memory>1</memory>
+            <code_size>7480</code_size>
+        </user>
+    </solved_list>
+</problem>
